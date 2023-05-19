@@ -34,20 +34,20 @@ The SIEM secret finder is an excellent solution to tackle this issue. It uses ke
         output_file_path: '/tmp/secrets.csv'
 
     sumologic:
-        url: <<'https://{hostname}/api/v1/search/jobs'>>
-        access_id: <<'{acess_id}'>>
-        access_key: <<'{access_key}'>>
-        search_query: <<'_dataTier=All _source=* privateKey or publicKey | fields _raw'>>
-        start_time: <<'2023-05-10T20:00:00'>>
-        end_time: <<'2023-05-10T23:01:00'>>
-        timezone: <<'IST'>>
+        url: 'https://<<hostname>>/api/v1/search/jobs'
+        access_id: '<<acess_id>>'
+        access_key: '<<access_key>>'
+        search_query: '_dataTier=All _source=* access_token or privateKey or publicKey | fields _raw'
+        start_time: '2023-05-10T20:00:00'
+        end_time: '2023-05-10T20:01:00'
+        timezone: 'IST'
 
     splunk:
-        url: <<'https://{hostname}'>>
-        token: <<{token}>>
-        search_query: <<'index=_internal | fields _raw'>>
-        start_time: <<'-1m'>>
-        end_time: <<'now'>>
+        url: 'https://<<hostname>>'
+        token: <<token>>
+        search_query: 'index=_internal | fields _raw'
+        start_time: '-1m'
+        end_time: 'now'
    ```
 
 4. Execute the script
