@@ -1,0 +1,26 @@
+secret-finder:
+  siem: <<Splunk|Sumologic>>
+  regex_keywords: ['password', 'apisecret', 'privateKey', 'publicKey', 'refresh_token', 'access_token'] # Keywords used to identify the secrets 
+  output_file_path: '/tmp/secrets.csv'
+  thread_count: 50 # To control the thread count
+  ignore_secret_values: [''] # To handle false positives. Update the list to remove the values from the output file. 
+
+# Refer SIEM REST API documentation 
+# https://api.sumologic.com/docs/
+sumologic:
+  url: 'https://<<hostname>>/api/v1/search/jobs'
+  access_id: '<<acess_id>>'
+  access_key: '<<access_key>>'
+  search_query: '_dataTier=All _source=* access_token or privateKey or publicKey | fields _raw'
+  start_time: '2023-05-10T20:00:00'
+  end_time: '2023-05-10T20:01:00'
+  timezone: 'IST'
+
+# https://docs.splunk.com/Documentation/Splunk/9.0.4/RESTUM/RESTusing
+splunk:
+  url: 'https://<<hostname>>'
+  token: <<token>>
+  search_query: 'index=_internal | fields _raw'
+  start_time: '-1m'
+  end_time: 'now'
+  timezone: 'IST' # Not in use 
