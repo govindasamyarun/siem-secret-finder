@@ -19,7 +19,7 @@ The SIEM secret finder is an excellent solution to tackle this issue. It uses ke
 
    ```sh
    cd /Data
-   git clone https://github.com/govindasamyarun/testrepo
+   git clone https://github.com/govindasamyarun/siem-secret-finder
    ```
 
 2. Install prerequisites 
